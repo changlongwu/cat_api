@@ -1,14 +1,23 @@
 import { useState } from 'react'
 
-const catHistory = () =>{
+const CatHistory = ({catHistory}) =>{
     return (
 
-        <div className='catHistory'>
+        <div className='history-sidebar'>
+            
+            <h3>Who have we seen so far?</h3>
 
+            {catHistory.map((cat, index) => (
+                <div key={index}>
+                    <p>{cat.catName}</p>
+                    <p>{cat.catOrigin}</p>
+                    <img src={cat.catImage} alt={cat.catName} width='50px' />
+                </div>
+                ))}
 
         </div>
     )
 }
 
-export default catHistory
+export default CatHistory;
 

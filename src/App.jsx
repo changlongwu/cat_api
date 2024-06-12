@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import './App.css'
 import AnimalCard from './components/AnimalCard';
+import CatHistory from './components/CatHistory';
 
 const ACCESS_KEY = import.meta.env.VITE_APP_ACCESS_KEY;
 
@@ -60,11 +61,17 @@ function App() {
       1/ click a button to create a api fetch
       */}
 
-    {/* history section */}
+
 
 
 
     {/* the barn list */}
+
+    {/* history section */}
+    <CatHistory 
+    catHistory={catHistory}
+    />
+
 
     {/* the animal card */}
     <AnimalCard 
