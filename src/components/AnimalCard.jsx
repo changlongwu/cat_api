@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 
-const AnimalCard = ({callAPI, catName,catOrigin,currenImage}) =>{
+const AnimalCard = ({callAPI, catName,catOrigin,currenImage, addToBanList}) =>{
     return (
         
         <div className="AnimalCard">
@@ -13,9 +13,12 @@ const AnimalCard = ({callAPI, catName,catOrigin,currenImage}) =>{
 
             <div className="card-container">
                 <h3>{catName}</h3>
-                <h3>{catOrigin}</h3>
+                {/* <h3>{catOrigin}</h3> */}
+                {catOrigin && <button
+                onClick={()=>addToBanList(catOrigin)}
+                >{catOrigin}</button>}
 
-                <img src={currenImage} alt="" width='500px'/>
+                {currenImage && <img src={currenImage} alt="" width='500px'/>}
 
                 <button className="discover-button" onClick={callAPI}>🔀 Discover!</button>
             </div>

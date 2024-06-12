@@ -3,6 +3,7 @@ import { useState } from 'react'
 import './App.css'
 import AnimalCard from './components/AnimalCard';
 import CatHistory from './components/CatHistory';
+import BanList from './components/BanList';
 
 const ACCESS_KEY = import.meta.env.VITE_APP_ACCESS_KEY;
 
@@ -40,9 +41,22 @@ function App() {
         }
     }
   }
+
+  const addToBanList =(ele)=>{
+    setBanListEle([...BanListEle, ele])
+    console.log('addToBanList')
+    console.log(BanListEle)
+    
+  }
+  const removeFromBanList = (ele)=>{
+    setBanListEle(BanListEle.filter((item)=>item!==ele))
+  }
+
   const [currenImage, setCurrenImage] = useState(null);
   const [currenCatID, setCurrenCatID] = useState(null);
   const [tempCatID, setTempCatID] = useState(null);
+
+  const [BanListEle, setBanListEle] = useState([]);
 
   //  cat info
   const [catName, setCatName] = useState(null);
@@ -66,6 +80,11 @@ function App() {
 
 
     {/* the barn list */}
+    <BanList 
+    BanListEle={BanListEle}
+    removeFromBanList = {removeFromBanList}
+    />
+
 
     {/* history section */}
     <CatHistory 
@@ -80,8 +99,12 @@ function App() {
     catName = {catName}
     catOrigin = {catOrigin}
     currenImage = {currenImage}
+    addToBanList = {addToBanList}
     />
+
+
     </div>
+
   )
 }
 
